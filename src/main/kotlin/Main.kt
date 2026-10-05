@@ -1,60 +1,63 @@
 import java.util.*
-import java.util.Locale.getDefault
 
 fun main() {
-    someFunction()
+    /*    val r = 10.8
+        val pi = 3.14
+        val s = pi * r * r
+        println("Площадь круга равна: $s")
 
-    /*while (true) {
-        println("How much money do you have ?")
-        val howMuchMoney = Scanner(System.`in`).nextInt()
+        val r1: Float = 10.8F
+        val pi1: Float = 3.14F
+        val s1: Float = (pi * r * r).toFloat()
+        println("Площадь круга равна: $s1")
 
-        if (howMuchMoney > 500) {
-            println("You can buy a pizza!")
-        } else if (howMuchMoney in 300 .. 500) {
-            println("You can buy a pasta!")
-        } else if (howMuchMoney in 100..299) {
-            println("You can buy a hamburger!")
-        } else if (howMuchMoney in 1..99) {
-            println("You can buy anakom!")
-        } else {
-            println("Go to food bank!")
+        val ch = '@'
+        val ch2 = ch.toInt()
+        println(ch)
+        println(ch2)*/
+    /* val scanner = Scanner(System.`in`)
+     println("Введите имя: ")
+     val name = scanner.next()
+     print("Hello, $name!")*/
+    /*var i = 1
+    while (i <= 1000) {
+        println(i)
+        if (i == 5) {
             break
         }
-        println()
-        println()
+        i++
+    }*/
+    /*var sum = 0
+    var count = 1
+    while (count <= 100) {
+        sum += count
+        count++
     }
-    println("See you later, with money")*/
-}
+    val result: Float = (sum / count).toFloat()
+    println(result)
 
-private fun someFunction() {
-    do {
-        println("How much money do you have for a lunch?")
-        when (Scanner(System.`in`).nextInt()) {
-            in 0..99 -> {
-                println("You can buy pamen !")
-            }
 
-            in 100..299 -> {
-                println("You can buy a hamburger !")
-            }
+    val someArray = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    println(someArray.average())*/
+    val daysOfMonth = arrayOfNulls<Int>(12)
+    daysOfMonth[0] = 31
+    daysOfMonth[1] = 28
+    daysOfMonth[2] = 31
+    daysOfMonth[3] = 30
+    daysOfMonth[4] = 31
+    daysOfMonth[5] = 30
+    daysOfMonth[6] = 31
+    daysOfMonth[7] = 31
+    daysOfMonth[8] = 30
+    daysOfMonth[9] = 31
+    daysOfMonth[10] = 30
+    daysOfMonth[11] = 31
+    println(daysOfMonth.joinToString())
+    println(daysOfMonth.contentToString())
 
-            in 300..499 -> {
-                println("You can buy a pasta ! ")
-            }
-
-            in 500..1_000_000 -> {
-                println("You can buy a pizza !")
-            }
-
-            else -> {
-                println("Go to foodbank !")
-            }
-        }
-        println()
-        println()
-        println("Do you want to continue? yes/no")
-        val userAnswer = Scanner(System.`in`).next().lowercase(getDefault())
-    } while (userAnswer == "yes")
-    println()
-    println("See you later!")
+    val numbers = arrayOfNulls<Int>(101)
+    for ((index) in numbers.withIndex()) {
+        numbers[index] = index
+    }
+    println(numbers.joinToString())
 }
