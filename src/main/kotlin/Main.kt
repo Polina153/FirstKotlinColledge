@@ -1,63 +1,52 @@
-import java.util.*
-
 fun main() {
-    /*    val r = 10.8
-        val pi = 3.14
-        val s = pi * r * r
-        println("Площадь круга равна: $s")
+    //val animal1 = Animal(name = "Mursik")
+  /*  val animal2 = Cat("Mursik")
+    println(animal2.name)*/
+    /*val animal3 = Dog("Tuzik")
+    println(animal3.name)
+    animal3.barking()
+    animal3.guard()*/
+    val cat = Cat("Barsik", 105)
+    val plate = Plate(0)
+    plate.info()
+    cat.printInfo()
+    cat.eat(plate)
+    plate.info()
+    cat.printInfo()
+    plate.increaseFood(200)
+    plate.info()
+    cat.printInfo()
+    cat.eat(plate)
+    plate.info()
+    cat.printInfo()
 
-        val r1: Float = 10.8F
-        val pi1: Float = 3.14F
-        val s1: Float = (pi * r * r).toFloat()
-        println("Площадь круга равна: $s1")
-
-        val ch = '@'
-        val ch2 = ch.toInt()
-        println(ch)
-        println(ch2)*/
-    /* val scanner = Scanner(System.`in`)
-     println("Введите имя: ")
-     val name = scanner.next()
-     print("Hello, $name!")*/
-    /*var i = 1
-    while (i <= 1000) {
-        println(i)
-        if (i == 5) {
-            break
-        }
-        i++
-    }*/
-    /*var sum = 0
-    var count = 1
-    while (count <= 100) {
-        sum += count
-        count++
-    }
-    val result: Float = (sum / count).toFloat()
-    println(result)
-
-
-    val someArray = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    println(someArray.average())*/
-    val daysOfMonth = arrayOfNulls<Int>(12)
-    daysOfMonth[0] = 31
-    daysOfMonth[1] = 28
-    daysOfMonth[2] = 31
-    daysOfMonth[3] = 30
-    daysOfMonth[4] = 31
-    daysOfMonth[5] = 30
-    daysOfMonth[6] = 31
-    daysOfMonth[7] = 31
-    daysOfMonth[8] = 30
-    daysOfMonth[9] = 31
-    daysOfMonth[10] = 30
-    daysOfMonth[11] = 31
-    println(daysOfMonth.joinToString())
-    println(daysOfMonth.contentToString())
-
-    val numbers = arrayOfNulls<Int>(101)
-    for ((index) in numbers.withIndex()) {
-        numbers[index] = index
-    }
-    println(numbers.joinToString())
+    /*    val user1 = User(23)
+        val user2 = User("Harry Potter")*/
 }
+
+/*
+class User(val id: Int) {     // 1️⃣ Первичный конструктор
+
+    val name = "Гость" // 2️⃣ Поле-инициализатор
+
+    init {             // 3️⃣ init #1
+        println("🔥 init #1: id=$id")
+        //require(id!= 0) { "ID должен быть больше 0!" }
+    }
+
+    val email = "${id}@example.com" // 4️⃣ Поле после init
+
+    init {             // 5️⃣ init #2
+        println("🔥 init #2: name=$name")
+    }
+
+    constructor(name: String) : this(0) { // 6️⃣ Вторичный
+        println("🔥 Вторичный конструктор: name=$name")
+        //this.name = name  // ⚠️ Нельзя! val неизменяемо
+    }
+
+    init {             // 5️⃣ init #3
+        println("🔥 init #3: name=$name")
+    }
+
+}*/
