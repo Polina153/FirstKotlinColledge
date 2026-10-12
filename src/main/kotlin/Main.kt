@@ -1,52 +1,107 @@
+import java.util.TreeSet
+
+const val PI = 3.14
+
 fun main() {
     //val animal1 = Animal(name = "Mursik")
-  /*  val animal2 = Cat("Mursik")
-    println(animal2.name)*/
+    /*  val animal2 = Cat("Mursik")
+      println(animal2.name)*/
     /*val animal3 = Dog("Tuzik")
     println(animal3.name)
     animal3.barking()
     animal3.guard()*/
-    val cat = Cat("Barsik", 105)
-    val plate = Plate(0)
-    plate.info()
-    cat.printInfo()
-    cat.eat(plate)
-    plate.info()
-    cat.printInfo()
-    plate.increaseFood(200)
-    plate.info()
-    cat.printInfo()
-    cat.eat(plate)
-    plate.info()
-    cat.printInfo()
+    /*    val cat = Cat("Barsik", 105)
+        val plate = Plate(0)
+        plate.info()
+        cat.printInfo()
+        cat.eat(plate)
+        plate.info()
+        cat.printInfo()
+        plate.increaseFood(200)
+        plate.info()
+        cat.printInfo()
+        cat.eat(plate)
+        plate.info()
+        cat.printInfo()*/
+    /* // LET
+     var nullableName: String? = "Kotlin"
 
-    /*    val user1 = User(23)
-        val user2 = User("Harry Potter")*/
+     nullableName?.length
+
+     nullableName?.let {
+         println(it.length)
+         println("Привет, $it!") // Выводится только если nullableName не null
+     }
+
+     val list = mutableListOf<Int>()
+
+     list.also {
+         println("Список до добавления: $it")
+     }.add(10)
+
+     println("Список после добавления: $list")*/
+    /*    //RUN
+        val rectangle = Rectangle(width = 10, height = 5)
+
+        val area = rectangle.run {
+            width * height
+        }
+
+        val area2 = rectangle.width * rectangle.height
+
+        println("Площадь прямоугольника: $area")*/
+    /*//WITH
+    val circle = Circle(radius = 7)
+
+    val rectangle = Rectangle(width = 10, height = 5)
+
+    val perimeter = with(circle) {
+        PI * radius * 2
+    }
+
+    with(rectangle) {
+        width *= 2
+        height *= 3
+        println("Rectangle width = $width and height = $height")
+    }
+
+    println("Длина окружности: $perimeter")
+
 }
 
-/*
-class User(val id: Int) {     // 1️⃣ Первичный конструктор
-
-    val name = "Гость" // 2️⃣ Поле-инициализатор
-
-    init {             // 3️⃣ init #1
-        println("🔥 init #1: id=$id")
-        //require(id!= 0) { "ID должен быть больше 0!" }
+data class Rectangle(var width: Int, var height: Int)
+data class Circle(val radius: Int)*/
+    /*val builder = StringBuilder()
+    builder.apply {
+        append("Привет, ")
+        append("мир!")
+        append(" Hello ")
+        append("world!")
+        append(" Hi, ")
+        append("hi!")
     }
 
-    val email = "${id}@example.com" // 4️⃣ Поле после init
+    println(builder)*/
+    val myArrayList = listOf<String>("Winter", "Spring", "Summer", "Autumn")
+    println(myArrayList)
+    myArrayList[3]
+    val myLinkedList = LinkedHashMap<String, Int>()
+    val myLinkedHashSet = LinkedHashSet<Int?>()
+    val set = setOf('a', 'b', 'c', 'a', 'b', 'c')//элементы уникальны! Потому коллекция хранит в себе только 3 элемента
+    println(set)
+    val map = mapOf("key" to 100, "age" to 30)
+    println(map)
+    val mutableMap = mutableMapOf("name" to "Иван").apply { this["city"] = "Москва" }
+    println(mutableMap)
 
-    init {             // 5️⃣ init #2
-        println("🔥 init #2: name=$name")
-    }
-
-    constructor(name: String) : this(0) { // 6️⃣ Вторичный
-        println("🔥 Вторичный конструктор: name=$name")
-        //this.name = name  // ⚠️ Нельзя! val неизменяемо
-    }
-
-    init {             // 5️⃣ init #3
-        println("🔥 init #3: name=$name")
-    }
-
-}*/
+    val numbers = TreeSet<Int>()
+    numbers.add(50)
+    numbers.add(30)
+    numbers.add(40)
+    println(numbers)
+    println(numbers.first())
+    val fruits = TreeSet(listOf("Apple", "Banana", "Cherry"))
+    fruits.add("Cherry")
+    fruits.add("Blueberry")
+    println(fruits)
+}
