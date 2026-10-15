@@ -1,107 +1,51 @@
-import java.util.TreeSet
+// Базовый класс транспортного средства
+open class Vehicle
 
-const val PI = 3.14
+// Конкретные транспортные средства
+class Car : Vehicle()
+class Truck : Vehicle()
+class Motorcycle : Vehicle()
 
-fun main() {
-    //val animal1 = Animal(name = "Mursik")
-    /*  val animal2 = Cat("Mursik")
-      println(animal2.name)*/
-    /*val animal3 = Dog("Tuzik")
-    println(animal3.name)
-    animal3.barking()
-    animal3.guard()*/
-    /*    val cat = Cat("Barsik", 105)
-        val plate = Plate(0)
-        plate.info()
-        cat.printInfo()
-        cat.eat(plate)
-        plate.info()
-        cat.printInfo()
-        plate.increaseFood(200)
-        plate.info()
-        cat.printInfo()
-        cat.eat(plate)
-        plate.info()
-        cat.printInfo()*/
-    /* // LET
-     var nullableName: String? = "Kotlin"
+// Каркас парковки, принимающий транспортное средство любого типа
+class CarPark<T : Vehicle> {
+    private val vehicles = mutableListOf<T>()
 
-     nullableName?.length
-
-     nullableName?.let {
-         println(it.length)
-         println("Привет, $it!") // Выводится только если nullableName не null
-     }
-
-     val list = mutableListOf<Int>()
-
-     list.also {
-         println("Список до добавления: $it")
-     }.add(10)
-
-     println("Список после добавления: $list")*/
-    /*    //RUN
-        val rectangle = Rectangle(width = 10, height = 5)
-
-        val area = rectangle.run {
-            width * height
-        }
-
-        val area2 = rectangle.width * rectangle.height
-
-        println("Площадь прямоугольника: $area")*/
-    /*//WITH
-    val circle = Circle(radius = 7)
-
-    val rectangle = Rectangle(width = 10, height = 5)
-
-    val perimeter = with(circle) {
-        PI * radius * 2
+    // Добавляем транспорт в парковку
+    fun park(vehicle: T) {
+        vehicles.add(vehicle)
     }
 
-    with(rectangle) {
-        width *= 2
-        height *= 3
-        println("Rectangle width = $width and height = $height")
+    // Количество припаркованных транспортных средств
+    fun countVehicles(): Int {
+        return vehicles.size
     }
 
-    println("Длина окружности: $perimeter")
-
+    // Возвращает список припаркованных транспортных средств (covariant)
+    fun vehicles(): List<@UnsafeVariance T> {
+        return vehicles
+    }
 }
 
-data class Rectangle(var width: Int, var height: Int)
-data class Circle(val radius: Int)*/
-    /*val builder = StringBuilder()
-    builder.apply {
-        append("Привет, ")
-        append("мир!")
-        append(" Hello ")
-        append("world!")
-        append(" Hi, ")
-        append("hi!")
-    }
+// Пример использования:
+fun main() {
+    // Создаем парковку для легковых автомобилей
+    val carParking = CarPark<Car>()
+    carParking.park(Car())
+    carParking.park(Car())
+    println(carParking.countVehicles()) // Output: 2
+    println(carParking.vehicles()) // Output: [Car, Car]
 
-    println(builder)*/
-    val myArrayList = listOf<String>("Winter", "Spring", "Summer", "Autumn")
-    println(myArrayList)
-    myArrayList[3]
-    val myLinkedList = LinkedHashMap<String, Int>()
-    val myLinkedHashSet = LinkedHashSet<Int?>()
-    val set = setOf('a', 'b', 'c', 'a', 'b', 'c')//элементы уникальны! Потому коллекция хранит в себе только 3 элемента
-    println(set)
-    val map = mapOf("key" to 100, "age" to 30)
-    println(map)
-    val mutableMap = mutableMapOf("name" to "Иван").apply { this["city"] = "Москва" }
-    println(mutableMap)
+    // Создаем парковку для грузовых автомобилей
+    val truckParking = CarPark<Truck>()
+    truckParking.park(Truck())
+    println(truckParking.countVehicles()) // Output: 1
+    println(truckParking.vehicles()) // Output: [Truck]
 
-    val numbers = TreeSet<Int>()
-    numbers.add(50)
-    numbers.add(30)
-    numbers.add(40)
-    println(numbers)
-    println(numbers.first())
-    val fruits = TreeSet(listOf("Apple", "Banana", "Cherry"))
-    fruits.add("Cherry")
-    fruits.add("Blueberry")
-    println(fruits)
+    // Универсальная парковка, принимающая любые транспортные средства
+    val universalParking = CarPark<Vehicle>()
+    universalParking.park(Car())
+    universalParking.park(Truck())
+    universalParking.park(Motorcycle())
+    println(universalParking.countVehicles()) // Output: 3
+    println(universalParking.vehicles()) // Output: [Car, Truck, Motorcycle]
 }
